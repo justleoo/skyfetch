@@ -1,7 +1,7 @@
 extern crate systemstat;
 #[warn(unused_imports)]
 mod colors;
-use systemstat::{System, Platform, saturating_sub_bytes};
+use systemstat::{System, Platform};
 
 fn main() {
     let sys = System::new();
