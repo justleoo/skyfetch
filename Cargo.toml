@@ -1,0 +1,9 @@
+[package]
+name = "skyfetch"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+whoami = "1.1.2"
+systemstat = "0.1.10"
