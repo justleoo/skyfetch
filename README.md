@@ -7,7 +7,7 @@ a system information fetch written in rust
 ## requirements
 
 - cargo
-  - install with `curl https://sh.rustup.rs -sSf | sh`
+  - install with `curl https://sh.rustup.rs -sSf | sh` or use install script of skyfetch
 
 ## installation 
 
