@@ -21,6 +21,8 @@ cargo install --path .
 
 using install script
 
-```curl https://raw.githubusercontent.com/justleoo/skyfetch/main/install.sh | bash```
+```
+curl https://raw.githubusercontent.com/justleoo/skyfetch/main/install.sh | bash
+```
 
 and use `skyfetch` command in your terminal!
