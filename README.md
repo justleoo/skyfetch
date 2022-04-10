@@ -2,7 +2,7 @@
 
 a system information fetch written in rust
 
-<img src="showcase.png">
+<img src="unknown.png">
 
 ## requirements
 
