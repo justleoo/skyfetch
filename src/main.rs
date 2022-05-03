@@ -37,7 +37,7 @@ fn main() {
                 whoami::hostname()
             ),
             &format!("{CYAN}os {WHITE}  ~ {CYAN}{}{BLUE}", whoami::distro()),
-            &format!("{YELLOW}upt {WHITE}  ~ {YELLOW}{uptime:?}{BLUE}"),
+            &format!("{YELLOW}upt {WHITE} ~ {YELLOW}{uptime:?}{BLUE}"),
             &format!("{GREEN}wm {WHITE}  ~ {GREEN}{wm}{BLUE}"),
             &format!("{MAGENTA}term{WHITE} ~ {MAGENTA}{term}{BLUE}"),
             &format!("{YELLOW_BRIGHT}sh {WHITE}  ~ {YELLOW_BRIGHT}{shell}{BLUE}"),
