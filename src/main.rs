@@ -47,5 +47,5 @@ fn main() {
     .set_tabsize(15)
     .make_columns();
 
-    println!("{}", fetch_text);
+    println!("{fetch_text}");
 }
