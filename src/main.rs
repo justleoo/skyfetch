@@ -1,47 +1,51 @@
 mod colors;
 mod utils;
+
 use colors::*;
-use std::env;
-use systemstat::{Platform, System};
+use columns::Columns;
+use std::env::var;
+use systemstat::{Duration, Platform, System};
+
+const ASCII: &str = "
+   __   _
+ _(  )_( )_
+(_   _    _)
+  (_) (__)";
+
 fn main() {
     let sys = System::new();
 
     // get wm
-    let wm = utils::get_wm().unwrap_or_else(|| "unknown".to_string());
+    let wm = utils::get_wm().unwrap_or_else(|| String::from("unknown"));
 
     // get terminal
-    let term = env::var("TERM").unwrap_or_else(|_| "unknown".to_owned());
+    let term = var("TERM").unwrap_or_else(|_| String::from("unknown"));
 
     // get shell
-    let shell = utils::get_shell().unwrap_or_else(|| "unknown".to_string());
+    let shell = utils::get_shell().unwrap_or_else(|| String::from("unknown"));
 
-    // username and hostname
-    println!(
-        "               {WHITE}{}{RED}@{RESET}{}",
-        whoami::username(),
-        whoami::hostname(),
-    );
+    // get uptime
+    let uptime = sys.uptime().unwrap_or_else(|_| Duration::default());
 
-    // os
-    println!(
-        "{BLUE}   __   _      {CYAN}os {WHITE}  ~ {CYAN}{}",
-        whoami::distro(),
-    );
+    // format fetch text
+    let fetch_text = Columns::from(vec![
+        format!("{BLUE}{ASCII}").split('\n').collect::<Vec<&str>>(),
+        vec![
+            &format!(
+                "     {WHITE}{}{RED}@{RESET}{}{BLUE}",
+                whoami::username(),
+                whoami::hostname()
+            ),
+            &format!("{CYAN}os {WHITE}  ~ {CYAN}{}{BLUE}", whoami::distro()),
+            &format!("{YELLOW}upt {WHITE}  ~ {YELLOW}{uptime:?}{BLUE}"),
+            &format!("{GREEN}wm {WHITE}  ~ {GREEN}{wm}{BLUE}"),
+            &format!("{MAGENTA}term{WHITE} ~ {MAGENTA}{term}{BLUE}"),
+            &format!("{YELLOW_BRIGHT}sh {WHITE}  ~ {YELLOW_BRIGHT}{shell}{BLUE}"),
+            &format!("{RED}● {YELLOW}● {CYAN}● {BLUE}● {WHITE}●"),
+        ],
+    ])
+    .set_tabsize(15)
+    .make_columns();
 
-    // uptime
-    if let Ok(uptime) = sys.uptime() {
-        println!("{BLUE} _(  )_( )_    {YELLOW}upt {WHITE} ~ {YELLOW}{uptime:?}",)
-    }
-
-    // wm
-    println!("{BLUE}(_   _    _)   {GREEN}wm {WHITE}  ~ {GREEN}{wm}");
-
-    // terminal
-    println!("{BLUE}  (_) (__)     {MAGENTA}term{WHITE} ~ {MAGENTA}{term}");
-
-    // shell
-    println!("               {YELLOW_BRIGHT}sh {WHITE}  ~ {YELLOW_BRIGHT}{shell}");
-
-    // decoration
-    println!("               {RED}● {YELLOW}● {CYAN}● {BLUE}● {WHITE}●")
+    println!("{}", fetch_text);
 }
