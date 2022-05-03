@@ -39,6 +39,11 @@ dependencies = [
 ]
 
 [[package]]
+name = "columns"
+version = "0.1.0"
+source = "git+https://github.com/S0raWasTaken/Columns?branch=master#36adeb2ff1d0067786578ac2a90a12f2656bd9dc"
+
+[[package]]
 name = "js-sys"
 version = "0.3.56"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -131,6 +136,7 @@ dependencies = [
 name = "skyfetch"
 version = "0.1.0"
 dependencies = [
+ "columns",
  "systemstat",
  "whoami",
 ]
