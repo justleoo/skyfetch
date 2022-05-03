@@ -1,8 +1,9 @@
-## skyfetch ☁️
-
-a system information fetch written in rust
-
-<img src="unknown.png">
+<div align="center">
+  <h2>skyfetch ☁️</h2>
+  <p>a system information fetch written in rust :crab:</p>
+  
+  <img src="skyfetch.png">
+</div>
 
 ## requirements
 
@@ -24,3 +25,7 @@ and use `skyfetch` command in your terminal!
 [yxqsnz](https://github.com/yxqsnz) improve code quality
 
 [S0raWasTaken](https://github.com/s0rawastaken) capture variable in string
+
+## license
+
+MIT.
