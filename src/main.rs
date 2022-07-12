@@ -1,10 +1,12 @@
 mod colors;
 mod utils;
 
-use colors::*;
-use columns::Columns;
-use std::env::var;
-use systemstat::{Duration, Platform, System};
+use::{
+   colors::*,
+   columns::Columns,
+   std::env::var,
+   systemstat::{Duration, Plataform, System},
+};
 
 const ASCII: &str = "
    __   _
